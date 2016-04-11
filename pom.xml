@@ -7,9 +7,11 @@
   <packaging>jar</packaging>
  <name>twitter</name>
   <url>http://maven.apache.org</url>
-
-  <properties>
+<properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <hikari.version>2.2.5</hikari.version>
+		<hiccup.version>2.4.1</hiccup.version>
+		  <storm.version>0.10.0.2.3.0.0-2557</storm.version>
   </properties>
 <dependencies>
         <dependency>
@@ -80,6 +82,19 @@
 	<version>9.1-901.jdbc4</version>
 </dependency>
 
+<dependency>
+	<groupId>org.apache.storm</groupId>
+	<artifactId>storm-jdbc</artifactId>
+	<version>0.10.0</version>
+</dependency>
+
+
+<dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikari.version}</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
   
 </project>
