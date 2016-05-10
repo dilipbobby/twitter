@@ -113,8 +113,7 @@ public class ReplyTxt {
 			String usertimeline_link = "https://api.twitter.com/1.1/statuses/user_timeline.json?count=200&screen_name="
 					+ reply_string_scname;
 
-			if (!reply_string_id.isEmpty() && !reply_string_id.equals("null"))
-				;
+			if (!reply_string_id.isEmpty() && !reply_string_id.equals("null"));
 			{
 				String replyuser_obj = u.combine(usertimeline_link);
 
@@ -122,10 +121,11 @@ public class ReplyTxt {
 				String replytxt = u.Getreplytxt(replyuser_obj, reply_string_id);
 				System.out.println("Great day");
 				System.out.println("reply txt" + replytxt);
+				tweetobj.put("in_reply_to_user_text", replytxt);
 			}
 
 		} // for close
-
+System.out.println(mainobj);
 	}// main close
 
 	public String combine(String link) throws OAuthMessageSignerException, OAuthExpectationFailedException,
@@ -166,6 +166,7 @@ public class ReplyTxt {
 				System.out.println("found the tweet ID of Reply user");
 				System.out.println("TWEET ID AND REPLY ID " + replyid + "" + tweetid);
 				replytxt = tweetobj.getString("text");
+				break;
 
 			} // if close
 
