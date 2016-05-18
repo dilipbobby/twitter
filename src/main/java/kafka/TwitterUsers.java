@@ -19,11 +19,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-/*import kafka.javaapi.producer.Producer;
-import kafka.producer.KeyedMessage;
-import kafka.producer.ProducerConfig;*/
-//import kafka.javaapi.producer.Producer;
-//import kafka.producer.ProducerConfig;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import oauth.signpost.exception.OAuthCommunicationException;
@@ -36,7 +31,7 @@ import twitter4j.JSONException;
 import twitter4j.JSONObject;
 //import twitter4j.JSONObjectType;
 
-public class ReplyTxt {
+public class TwitterUsers {
 	static OAuthConsumer consumer;
 	static HttpResponse response;
 	static String m;
@@ -49,43 +44,14 @@ public class ReplyTxt {
 
 	public static void main(String[] args) throws Exception {
 
-		// kafka connection establishment
-
-		/*
-		 * Properties props = new Properties();
-		 * props.put("metadata.broker.list", "localhost:9092");
-		 * props.put("serializer.class", "kafka.serializer.StringEncoder");
-		 * props.put("partitioner.class", "com.aail.kafka.SimplePartitioner");
-		 * props.put("request.required.acks", "1");
-		 * props.put("retry.backoff.ms", "150");
-		 * props.put("message.send.max.retries","1");
-		 * props.put("topic.metadata.refresh.interval.ms","0");
-		 * 
-		 * ProducerConfig config = new ProducerConfig(props);
-		 * 
-		 * 
-		 * final Producer<String, String> producer = new Producer<String,
-		 * String>(config);
-		 */
 
 		String search_link = "https://api.twitter.com/1.1/search/tweets.json?include_entities=true&count=1&q=heymailme143";
-		String timeline_link = "https://api.twitter.com/1.1/statuses/user_timeline.json?count=4&screen_name=heymailme143";
+		String timeline_link = "https://api.twitter.com/1.1/statuses/user_timeline.json?count=1&screen_name=vanajapotla";
 		// String
 		// search_link="https://api.twitter.com/1.1/statuses/user_timeline.json?count=4&screen_name=heymailme143";
-		String Screen_name = null;
-		String search_tweet_text = null;
-		String replyuser = null;
-		String replyid = null;
-		JSONObject statuses_obj = null;
-		JSONObject user_entities = null;
-		JSONObject search_entities = null;
-		JSONObject mentionuserobj = null;
-		JSONArray media = null;
-		JSONObject mediobj = null;
-		JSONObject mentionuserobjq = null;
-		JSONObject mentionuserobjs = null;
+		
 
-		ReplyTxt u = new ReplyTxt();
+		TwitterUsers u = new TwitterUsers();
 
 		Integer doesntmatchcount = 0;
 
@@ -102,31 +68,20 @@ public class ReplyTxt {
 
 		JSONObject mainobj = new JSONObject(a);
 		JSONArray mainstatus = mainobj.getJSONArray("statuses");
-		for (int i = 0; i < mainstatus.length(); i++) {
-			JSONObject tweetobj = mainstatus.getJSONObject(i);
-			String reply_string_id = tweetobj.getString("in_reply_to_status_id_str");
-			String reply_string_scname = tweetobj.getString("in_reply_to_screen_name"); // in_reply_to_screen_name
+		
+			JSONObject tweetobj = mainstatus.getJSONObject(0);
+			System.out.println( tweetobj);
+			JSONObject tweet_user=tweetobj.getJSONObject("user");
+			System.out.println(""+tweet_user);
+		
+			String TweetUserScrName=tweet_user.getString("screen_name");
+			String TweetUseruserName=tweet_user.getString("name");
+			String TweetUserId=tweet_user.getString("id_str");//charvar
+			String TweetUserLoc=tweet_user.getString("location");
+			String TweetUserDescription=tweet_user.getString("description");
+			
+			
 
-			System.out.println(reply_string_id);
-			System.out.println(reply_string_scname);
-
-			String usertimeline_link = "https://api.twitter.com/1.1/statuses/user_timeline.json?count=200&screen_name="
-					+ reply_string_scname;
-
-			if (!reply_string_id.isEmpty() && !reply_string_id.equals("null"));
-			{
-				String replyuser_obj = u.combine(usertimeline_link);
-
-				// System.out.println(replyuser_obj);
-				String replytxt = u.Getreplytxt(replyuser_obj, reply_string_id);
-			 
-				System.out.println("Great day");
-				System.out.println("reply txt" + replytxt);
-				tweetobj.put("in_reply_to_user_text", replytxt);
-			}
-
-		} // for close
-System.out.println(mainobj);
 	}// main close
 
 	public String combine(String link) throws OAuthMessageSignerException, OAuthExpectationFailedException,
@@ -140,7 +95,8 @@ System.out.println(mainobj);
 		HttpGet request = new HttpGet(link);
 
 		// search
-	consumer.sign(request);
+
+		consumer.sign(request);
 
 		HttpClient client = new DefaultHttpClient();
 
@@ -174,21 +130,5 @@ System.out.println(mainobj);
 
 		return replytxt;
 	}
-	//scname
-	/*public String Getscname(String replyobj, String replyid) throws JSONException {
-
-		JSONArray reply = new JSONArray(replyobj);
-		String replyscname = null;
-		JSONObject replytweetuser=null;
-		for (int i = 0; i < reply.length(); i++) {
-			JSONObject tweetobj = reply.getJSONObject(i);
-			replytweetuser=tweetobj.getJSONObject("user");
-			replytweetuser.toString();
-			System.out.println(replytweetuser);
-
-		} // for close
-
-		return replytweetuser.toString();
-	}*/
 
 } // class close
