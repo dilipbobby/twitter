@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Sentiments {
 
     public static void main(String[] args) {
-       String topic="#WorldLargestSolarRooftop";
+       String topic="#tarak9999";
        int netural=0;
        int Negative=0;
     	//String topic = "ICCT20WC"; //#MakeASongWhiter,#WorldLargestSolarRooftop

@@ -1,4 +1,6 @@
-package twittersentiment;
+package sentiment.nepsnu;
+
+
 
 import java.util.Properties;
 
@@ -11,7 +13,7 @@ import edu.stanford.nlp.sentiment.SentimentCoreAnnotations.SentimentAnnotatedTre
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.util.CoreMap;
 
-public class NLP {
+public class NLP1 {
     static StanfordCoreNLP pipeline;
 
     public static void init() {
@@ -22,8 +24,9 @@ public class NLP {
     }
 
     public static /*int*/String findSentiment(String tweet) {
-              int mainSentiment = 0;
              
+              tweet = tweet.replaceAll("[^\\x00-\\x7f-\\x80-\\xad]", "");
+              int mainSentiment = 0;
               String sentimentS ="";
         if (tweet != null && tweet.length() > 0) {
             int longest = 0;
@@ -48,4 +51,5 @@ public class NLP {
         return sentimentS;
     }
 }
+
 

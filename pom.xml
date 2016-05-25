@@ -87,6 +87,7 @@
 	<artifactId>storm-jdbc</artifactId>
 	<version>0.10.0</version>
 </dependency>
+<!--  
  <dependency>
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>
@@ -102,7 +103,21 @@
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-parser</artifactId>
             <version>3.5.2</version>
+        </dependency> -->
+        
+<dependency>
+   <groupId>edu.stanford.nlp</groupId>
+   <artifactId>stanford-corenlp</artifactId>
+   <version>3.6.0</version>
+</dependency>
+ 
+ <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>3.6.0</version>
+            <classifier>models</classifier>
         </dependency>
+        
     <!-- for google search  -->    
         <dependency>
     <groupId>org.jsoup</groupId>
