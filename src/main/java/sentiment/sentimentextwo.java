@@ -73,4 +73,5 @@ public class sentimentextwo {
     Map<Integer, CorefChain> graph = 
       document.get(CorefChainAnnotation.class);
 	  }
+
 }

@@ -32,6 +32,7 @@ public class NLP {
                     .get(CoreAnnotations.SentencesAnnotation.class)) {
                 Tree tree = sentence
                         .get(SentimentAnnotatedTree.class);
+               // System.out.println(tree);
                 int sentiment = RNNCoreAnnotations.getPredictedClass(tree);
                 String partText = sentence.toString();
                 if (partText.length() > longest) {

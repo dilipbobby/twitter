@@ -19,11 +19,20 @@ public class sentiment {
 		//String text = "tension free";
 		//String text="the quick fox jumps over the lazy dog";
 		//String text="Seeing your face makes me reconsider living on this planet.";
-//String text="The movie was TOO  good";//Sentiment analysis has never been good.
+//String text="We got my dad an iPhone 6 Father’s Day and he doesn’t know what he’s going and it’s so funny";//Sentiment analysis has never been good.
 		//Sentiment analysis has never been this good //This is shit //This is the shit
-		String text="This is the shit";
-		Properties props = new Properties();
-        props.setProperty("annotators", "tokenize, ssplit, pos, lemma, parse, sentiment");
+	//String text="I studied at Harvard";//I studied at Stanford
+	//String text="white blood cells destroying an infection";
+	//	String text="an infection destroying white blood cells";
+		//String text="IT was very fantastic experience. it was a pathetice experience";
+		//String text="A picture of new india...Am moved by the love and emotions and exhilarated about the honesty in their expression";
+	   // String text="I appeal to everyone to stay safe and indoors, ahead of a Cyclone warning. Do not venture onto the coast. Stock up water & food supplies.";
+		//String text="RT @PSBrarOfficial";
+		String text="Professor reveals to students that his assistant was an AI all along";
+	  Properties props = new Properties();
+      props.setProperty("annotators", "tokenize, ssplit, pos, lemma, parse, sentiment");
+      //props.put("pos.model", "/home/storm/datasets/twitie-tagger/models/gate-EN-twitter.model");
+      ///  props.put("dcoref.score", true);
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
         Annotation annotation = pipeline.process(text);

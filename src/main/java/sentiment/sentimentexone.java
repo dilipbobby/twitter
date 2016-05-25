@@ -34,7 +34,7 @@ public class sentimentexone {
       annotation = new Annotation(IOUtils.slurpFileNoExceptions(args[0]));
     } else {
      // annotation = new Annotation("Kosgi Santosh sent an email to Stanford University. He didn't get a reply.");
-    	annotation = new Annotation("the quick fox jumps over the lazy dog");
+    	annotation = new Annotation("the quick fox jumps over the lazy dog");//very
     }
 
     pipeline.annotate(annotation);//pipeline.process(text);
@@ -51,17 +51,15 @@ public class sentimentexone {
       out.println();
       out.println("The first sentence parsed is:");
       tree.pennPrint(out);
-//      for (CoreMap sentencess : sentences) {
-//          String sentiment = sentence.get(SentimentCoreAnnotations.SentimentClass.class);
-//          System.out.println(sentiment + "\t" + sentencess);
-      //}
-      /*
-       * 
-       * List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
+  //  for (CoreMap sentencess : sentences) {
+     //     String sentiment = sentence.get(SentimentCoreAnnotations.SentimentClass.class);
+    //      System.out.println(sentiment + "\t" + sentencess);
+     // }
+     /* List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
         for (CoreMap sentence : sentences) {
             String sentiment = sentence.get(SentimentCoreAnnotations.SentimentClass.class);
-            System.out.println(sentiment + "\t" + sentence);
-       * */
+            System.out.println(sentiment + "\t" + sentence);*/
+      
     }
   }
 

@@ -103,7 +103,26 @@
             <artifactId>stanford-parser</artifactId>
             <version>3.5.2</version>
         </dependency>
-
+    <!-- for google search  -->    
+        <dependency>
+    <groupId>org.jsoup</groupId>
+    <artifactId>jsoup</artifactId>
+    <version>1.7.2</version>
+</dependency>
+        
+<!-- datum -->
+   <dependency>
+        <groupId>com.datumbox</groupId>
+        <artifactId>datumbox-framework-lib</artifactId>
+        <version>0.7.0</version>
+    </dependency>
+<!-- bookteam -->
+<dependency>
+    <groupId>org.twitter4j</groupId>
+    <artifactId>twitter4j-stream</artifactId>
+    <version>4.0.4</version>
+</dependency>
+ 
 <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>

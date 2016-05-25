@@ -60,7 +60,7 @@ public class ArticleNlpRunner {
       // these are all the sentences in this document
       // a CoreMap is essentially a Map that uses class objects as keys and has values with
       // custom types
-      List sentences = document.get(SentencesAnnotation.class);
+      List<CoreMap>  sentences = document.get(SentencesAnnotation.class);
       StringBuilder sb = new StringBuilder();
       
       //I don't know why I can't get this code out of the box from StanfordNLP, multi-token entities
