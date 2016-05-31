@@ -87,6 +87,15 @@
 	<artifactId>storm-jdbc</artifactId>
 	<version>0.10.0</version>
 </dependency>
+
+
+<dependency>
+    <groupId>postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>9.1-901-1.jdbc4</version>
+</dependency>
+
+
 <!--  
  <dependency>
             <groupId>edu.stanford.nlp</groupId>
@@ -104,6 +113,15 @@
             <artifactId>stanford-parser</artifactId>
             <version>3.5.2</version>
         </dependency> -->
+        
+        
+       <dependency>
+    <groupId>com.googlecode</groupId>
+    <artifactId>google-api-translate-java</artifactId>
+    <version>0.92</version>
+</dependency>
+       
+        
         
 <dependency>
    <groupId>edu.stanford.nlp</groupId>
@@ -143,7 +161,11 @@
     <artifactId>gson</artifactId>
     <version>2.6.2</version>
 </dependency>
- 
+<dependency>
+    <groupId>com.google.api-client</groupId>
+    <artifactId>google-api-client</artifactId>
+    <version>1.20.0</version>
+</dependency>
 <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>

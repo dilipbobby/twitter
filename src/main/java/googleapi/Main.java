@@ -82,8 +82,14 @@ class Main {
               String jsonText = readAll(rd);
               JSONObject json = new JSONObject(jsonText);
               System.out.println("json--"+json);
-              System.out.println(json.getJSONArray("items").getJSONObject(0).get("displayName"));
-              System.out.println(json.getJSONArray("items").getJSONObject(0).get("url"));
+           System.out.println(json.getJSONArray("items").getJSONObject(0).get("displayName"));
+           System.out.println(json.getJSONArray("items").getJSONObject(0).get("url"));
+            /*  JSONArray userdetails=json.getJSONArray("items");
+              JSONObject userobj=userdetails.getJSONObject(0);
+              //System.out.println(userobj);
+              String username=userobj.getString("displayName");
+              System.out.println(username);
+             ;*/
               return json;
             } finally {
               is.close();

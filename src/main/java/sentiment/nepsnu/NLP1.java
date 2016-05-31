@@ -41,7 +41,6 @@ public class NLP1 {
                 if (partText.length() > longest) {
                     mainSentiment = sentiment;
                     longest = partText.length();
-                    //System.out.println("**** END OF IF CONDTION IN THE NPL ****");
                 }
                  sentimentS = sentence.get(SentimentCoreAnnotations.SentimentClass.class);
             }
