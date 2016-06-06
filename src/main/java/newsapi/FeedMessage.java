@@ -1,5 +1,4 @@
 package newsapi;
-//http://www.vogella.com/tutorials/RSSFeed/article.html
 public class FeedMessage {
 
  String title;
