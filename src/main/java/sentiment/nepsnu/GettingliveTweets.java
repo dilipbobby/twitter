@@ -22,7 +22,7 @@ public class GettingliveTweets{
  //	Map Twittertager=new HashMap();
 
 	public static void main(String[] args) throws InterruptedException, FileNotFoundException  {
-        System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("/home/storm/Videos/senti.txt")), true));
+        //System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("/home/storm/Videos/senti.txt")), true));
 int textcount=0;
         String topic = "#orangearmy";
         ArrayList<String> tweets = TweetManager.getTweets(topic);

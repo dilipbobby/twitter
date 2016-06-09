@@ -40,7 +40,6 @@ public class SimpleStream {
 
             }
 
-            @Override
             public void onStatus(Status status) {
                 User user = status.getUser();
                 
@@ -64,7 +63,6 @@ System.out.println(url);
             }
 
 
-			@Override
 			public void onStallWarning(StallWarning arg0) {
 				// TODO Auto-generated method stub
 				
