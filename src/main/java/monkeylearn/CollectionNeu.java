@@ -20,7 +20,7 @@ public class CollectionNeu {
     public static void main( String[] args ) throws MonkeyLearnException, FileNotFoundException, JSONException {
  System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("/home/storm/Videos/sentiNetralNamo.txt")), true));
 
-    	 String topic = "#ModiInUSCongress";
+    	 String topic = "@Reuters";
          ArrayList<String> tweets = TweetManager.getTweets(topic);
          CollectionNeu.Sentiment(tweets); //#Midyat
         }//for close
@@ -41,9 +41,9 @@ public static void Sentiment(ArrayList<String> tweets) throws MonkeyLearnExcepti
    //   System.out.println(sam);
       twitter4j.JSONObject obj=sam.getJSONObject(0);
       String sentimentt=obj.getString("label");
-      //if(sentimentt.equals("neutral")){
+      if(sentimentt.equals("neutral")){
       System.out.println(sentimentt+" "+tweet);
-    //  }
+      }
 }
 	//return null;
 }
