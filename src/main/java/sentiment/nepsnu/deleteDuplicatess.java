@@ -34,16 +34,18 @@ void deleteDuplicates(File filename) throws IOException{
     System.out.println("Read the duplicate contents now and writing to file");
     while((line=reader.readLine())!=null){
         line = line.trim(); 
-        StringTokenizer str = new StringTokenizer(line, delims);
-        while (str.hasMoreElements()) {
-            line = (String) str.nextElement();
+       // StringTokenizer str = new StringTokenizer(line, delims);
+       // while (str.hasMoreElements()) {
+           // line = (String) str.nextElement();
+            System.out.println(line);
             lines.add(line);
+            System.out.println(lines.size());
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
             for(String unique: lines){
-                writer.write(unique+" ");               
+                writer.write(unique+"\n");               
             }
-            writer.close();
-        }
+           // writer.close();
+        //}
     }
     System.out.println(lines);
     System.out.println("Duplicate removal successful");
