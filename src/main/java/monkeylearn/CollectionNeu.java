@@ -20,7 +20,7 @@ public class CollectionNeu {
     public static void main( String[] args ) throws MonkeyLearnException, FileNotFoundException, JSONException {
  System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("/home/storm/Videos/sentiNetralNamo.txt")), true));
 
-    	 String topic = "@Reuters";
+    	 String topic = "@FoxNews";
          ArrayList<String> tweets = TweetManager.getTweets(topic);
          CollectionNeu.Sentiment(tweets); //#Midyat
         }//for close

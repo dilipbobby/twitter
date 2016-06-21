@@ -1,7 +1,5 @@
 package googlesearch;
 
-
-
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -12,13 +10,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-
-
 public class GoogleNewData {
 	public static void main(String[] args) throws IOException {
 
 	String google = "http://www.google.com/search?q=";
-	String search = "google news";
+	String search = "modi";
 	String charset = "UTF-8";
 	String userAgent = "ExampleBot 1.0 (+http://example.com/bot)"; // Change this to your company's name and bot homepage!
 

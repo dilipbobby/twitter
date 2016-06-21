@@ -23,7 +23,7 @@ public class GoogleCrawler {
   public static void main(String[] args) {
 
 	  GoogleCrawler obj = new GoogleCrawler();
-	Set<String> result = obj.getDataFromGoogle("mario");
+	Set<String> result = obj.getDataFromGoogle("modi");
 	for(String temp : result){
 		System.out.println(temp);
 	}

@@ -29,13 +29,16 @@ public class sentiment {
 	   // String text="I appeal to everyone to stay safe and indoors, ahead of a Cyclone warning. Do not venture onto the coast. Stock up water & food supplies.";
 		//String text="RT @PSBrarOfficial";
 		//String text="Professor reveals to students that his assistant was an AI all along";
-		String text="Fear for fear. Hate for hate. Bullet for bullet. Where r v heading!? 😞";
+		//String text="@SouthwestAir Fastest response all day,Hour on the phone: never got off hold, Hour in line: never got to the Flight Booking Problems desk.";
+		//String text="Illegal immigrant charged with murder in California fire had prior arrests, was never deported via the @FoxNews App https://t…";
+		//String text="RT @FoxNews: .@JudgeJeanine: Terrorists have no Second Amendment rights https://t.co/BIY8B50UqR";
+		//String text="Fear for fear. Hate for hate. Bullet for bullet. Where r v heading!? 😞";
+		String text="RT @AJPunkIsMyWorld: Unbelievable. :clap::clap::sob::sob::sob: #WWE #DeanAmbrose #Ambrose #MITB #WWEMITB https://t.co/KZqkgQu01C";
 	  Properties props = new Properties();
       props.setProperty("annotators", "tokenize, ssplit, pos, lemma, parse, sentiment");
       //props.put("pos.model", "/home/storm/datasets/twitie-tagger/models/gate-EN-twitter.model");
       ///  props.put("dcoref.score", true);
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
-
         Annotation annotation = pipeline.process(text);
         List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
         for (CoreMap sentence : sentences) {
