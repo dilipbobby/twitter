@@ -25,15 +25,13 @@ public class HttpClientExample {
 		System.out.println("Testing 1 - Send Http GET request");
 		http.sendGet();*/
 
-		
-
 	//}
 
 	// HTTP GET request
 	///private void sendGet() throws Exception {
 
-		String url = "http://news.google.com/news?q=india&output=rss";
-
+		//String url = "http://news.google.com/news?q=india&output=rss";
+		String url = "https://search.yahoo.com/search;?p=apple&fr2=sb-top-search&fr=sfp-tts-s";
 		HttpClient client = new DefaultHttpClient();
 		HttpGet request = new HttpGet(url);
 

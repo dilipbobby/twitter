@@ -10,7 +10,7 @@ public class JavaHttpsExample
   public static void main(String[] args)
   throws Exception
   {
-    String httpsURL = "http://news.google.com/news?q=apple&output=rss";
+    String httpsURL = "https://news.google.com/news?q=apple&output=rss";
     URL myurl = new URL(null,httpsURL, new sun.net.www.protocol.https.Handler());
     HttpsURLConnection con = (HttpsURLConnection)myurl.openConnection();
     InputStream ins = con.getInputStream();
