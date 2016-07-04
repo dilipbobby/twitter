@@ -33,7 +33,7 @@ public class sentiment {
 		//String text="Illegal immigrant charged with murder in California fire had prior arrests, was never deported via the @FoxNews App https://t…";
 		//String text="RT @FoxNews: .@JudgeJeanine: Terrorists have no Second Amendment rights https://t.co/BIY8B50UqR";
 		//String text="Fear for fear. Hate for hate. Bullet for bullet. Where r v heading!? 😞";
-		String text="Just woke up to the news of #Brexit,Wow.";
+		String text="changes outfit 27 times wears first outfit.";
 		//String text="RT @AJPunkIsMyWorld: Unbelievable. :clap::clap::sob::sob::sob: #WWE #DeanAmbrose #Ambrose #MITB #WWEMITB https://t.co/KZqkgQu01C";
 	  Properties props = new Properties();
       props.setProperty("annotators", "tokenize, ssplit, pos, lemma, parse, sentiment");

@@ -7,7 +7,8 @@ import javax.net.ssl.HttpsURLConnection;
  
 public class JavaHttpsExample
 {
-  public static void main(String[] args)
+  @SuppressWarnings("restriction")
+public static void main(String[] args)
   throws Exception
   {
     String httpsURL = "https://news.google.com/news?q=apple&output=rss";
