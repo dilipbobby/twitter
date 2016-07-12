@@ -18,7 +18,7 @@ import com.monkeylearn.MonkeyLearnException;
  
 public class CollectionNeu {
     public static void main( String[] args ) throws MonkeyLearnException, FileNotFoundException, JSONException {
- System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("/home/storm/Videos/sentiNetralNamo.txt")), true));
+ //System.setOut(new PrintStream(new BufferedOutputStream(new FileOutputStream("/home/storm/Videos/sentiNetralNamo.txt")), true));
 
     	 String topic = "@FoxNews";
          ArrayList<String> tweets = TweetManager.getTweets(topic);
@@ -36,14 +36,14 @@ public static void Sentiment(ArrayList<String> tweets) throws MonkeyLearnExcepti
       String[] textList = {tweet};
       MonkeyLearnResponse res = ml.classifiers.classify(moduleId, textList, true);
       System.out.println();
-    //  System.out.println(res.arrayResult.get(0).toString()+" "+tweet);
-      twitter4j.JSONArray sam=new twitter4j.JSONArray(res.arrayResult.get(0).toString());
-   //   System.out.println(sam);
-      twitter4j.JSONObject obj=sam.getJSONObject(0);
-      String sentimentt=obj.getString("label");
-      if(sentimentt.equals("neutral")){
+  System.out.println(res.arrayResult.get(0).toString()+" "+tweet);
+     // twitter4j.JSONArray sam=new twitter4j.JSONArray(res.arrayResult.get(0).toString());
+  //  System.out.println(sam);
+      //twitter4j.JSONObject obj=sam.getJSONObject(0);
+      /* String sentimentt=obj.getString("label");
+     if(sentimentt.equals("neutral")){
       System.out.println(sentimentt+" "+tweet);
-      }
+      }*/
 }
 	//return null;
 }

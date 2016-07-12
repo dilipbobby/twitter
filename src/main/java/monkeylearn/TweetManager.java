@@ -26,7 +26,7 @@ public class TweetManager {
         
         ArrayList<String> tweetList = new ArrayList<String>();
         try {
-            Query query = new Query(topic);
+            Query query = new Query("lang:en AND"+topic);//"lang:en"+topic
             QueryResult result;
             do {
                 result = twitter.search(query);
