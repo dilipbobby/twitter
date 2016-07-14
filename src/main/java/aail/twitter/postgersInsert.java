@@ -6,30 +6,9 @@ import java.sql.Statement;
 
 public class postgersInsert {
 	   public void psqlInsertsNews(String tweet_text,String probability,String tweetsentiment ) {
-	      Connection c = null;
-	      Statement stmt = null;
-	      try {
-	         Class.forName("org.postgresql.Driver");
-	         c = DriverManager
-	            .getConnection("jdbc:postgresql://localhost:5432/users",
-	            "postgres", "");
-	         c.setAutoCommit(false);
-	         System.out.println("Opened database successfully");
-
-	         stmt = c.createStatement();
-	         String sql = "INSERT INTO TweetSentimentNews(TweetText,Probability,Sentiment) "
-	               + "VALUES (tweet_text,probability, );";
-	         stmt.executeUpdate(sql);
-	         stmt.close();
-	         c.commit();
-	         c.close();
-	      } catch (Exception e) {
-	         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-	         System.exit(0);
-	      }
-	      System.out.println("Records created successfully");
+	      
 	   }
-	   public void psqlInsertsPersons(String tweet_text,String probability,String tweetsentiment ) {
+	  /* public void psqlInsertsPersons(String tweet_text,String probability,String tweetsentiment ) {
 		      Connection c = null;
 		      Statement stmt = null;
 		      try {
@@ -148,5 +127,5 @@ public class postgersInsert {
 		         System.exit(0);
 		      }
 		      System.out.println("Records created successfully");
-		   }
+		   }*/
 	}

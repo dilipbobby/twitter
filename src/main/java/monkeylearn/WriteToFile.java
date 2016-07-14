@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,17 +24,24 @@ import sentiment.nepsnu.TweetManager;
 
 public class WriteToFile {
 	
-	public static void SetPathforSentiment(String ipfilepath,String opfilepath) throws MonkeyLearnException, FileNotFoundException, IOException {
-		String path=opfilepath;
+	public static void SetPathforSentiment(String ipfilepath,String tablename) throws MonkeyLearnException, FileNotFoundException, IOException, SQLException {
+	//	String path=opfilepath;
+		//File file = new File(opfilepath);
+		//System.out.println(file);
+		
 		try (BufferedReader br = new BufferedReader(new FileReader(ipfilepath)))
 			{
 				String Line;
+				System.out.println("OUTPUT TABLE NAME "+tablename);
+				/*FileWriter fw = new FileWriter(file.getAbsoluteFile());
+				BufferedWriter bw = new BufferedWriter(fw);*/
 				// String sentimentarry;
 				while ((Line = br.readLine()) != null) {
 					System.out.println(Line);//print line
 					String name=Line;
 					ArrayList<String> tweets = TweetManager.getTweets(name);
 			        Set<String> uniqueSet = new HashSet<String>();
+			     
 			        for(String tweet : tweets){
 			        	uniqueSet.add(tweet);
 			        	if(uniqueSet.contains(tweet)){
@@ -45,16 +53,20 @@ public class WriteToFile {
 			        		 JSONObject jobj=jarryx.getJSONObject(0);
 				        	 String tweetsentiment=jobj.getString("label");	
 					         System.out.println(tweet+","+tweetsentiment);
-					         TweetWriter.SentiWriter(path, tweet, tweetsentiment);
+					         psqlInsertfields.insertdb(tablename, "'"+tweet+"'", "'"+tweetsentiment+"'");
+							 System.out.println("Done");
+					         //TweetWriter.SentiWriter(file, tweet, tweetsentiment);
+								
 				        }//if close
 			        }//for close
-					
-					
+					//bw.close();
 				}//while close
 } 
 		catch (IOException e) {
 		e.printStackTrace();
 	}//catch s 
+		
+		
 			
 		/*String Personspath="/home/storm/Documents/datasetsTopics/Personspath.txt";
 			try (BufferedReader brpersons = new BufferedReader(new FileReader("/home/storm/Documents/datasetsTopics/persons")))
@@ -116,6 +128,7 @@ public class WriteToFile {
 			
 //System.out.println("Done");
 	}//main close
+	
 }//class close 
 
 

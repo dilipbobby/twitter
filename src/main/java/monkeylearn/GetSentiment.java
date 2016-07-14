@@ -1,30 +1,57 @@
 package monkeylearn;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.monkeylearn.MonkeyLearnException;
 
 public class GetSentiment {
 	
-public static void main(String args[]) throws FileNotFoundException, MonkeyLearnException, IOException{
+public static void main(String args[]) throws FileNotFoundException, MonkeyLearnException, IOException, SQLException{
 		
 		
-		WriteToFile news=new WriteToFile();
+		WriteToFile topic=new WriteToFile();
+		int count=0;
 		
-		String newsip="";
-		String newsop="";
+		File file = new File("/home/storm/Documents/datasetsTopics/count.txt");
+	      // creates the file
+	      file.createNewFile();
+	      // creates a FileWriter Object
+	      FileWriter writer = new FileWriter(file); 
+	      // Writes the content to the file
+	      DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	      Date date = new Date();
+	     
 		
-		String personsip="";
-		String presonsop="";
+		String newsip="/home/storm/Documents/datasetsTopics/news";
+		String newstablename="TweetSentimentNews";
 		
-		String companyip="";
-		String companyop="";
+		String personsip="/home/storm/Documents/datasetsTopics/persons";
+		String presonstablename="tweetsentimentpersons";
 		
-		String politicsip="";
-		String Politicsop="";
+		String companyip="/home/storm/Documents/datasetsTopics/companies";
+		String companyop="tweetsentimentcompany";
 		
-		news.SetPathforSentiment(newsip, newsop);
+		String politicsip="/home/storm/Documents/datasetsTopics/politics";
+		String Politicstablename="tweetsentimentpolitics";
+		
+		topic.SetPathforSentiment(newsip, newstablename);
+		topic.SetPathforSentiment(personsip, presonstablename);
+		topic.SetPathforSentiment(companyip, companyop);
+		topic.SetPathforSentiment(politicsip, Politicstablename);
+		
+	    count++;
+	 writer.write( "Date and time of update" +date+ "with the count" +count); 
+     writer.flush();
+     writer.close();
+
+	
 		
 	}
 

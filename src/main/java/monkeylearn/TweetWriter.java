@@ -7,14 +7,15 @@ import java.io.IOException;
 
 public class TweetWriter {
 	
-	public  static void SentiWriter(String filepath,String tweet,String Sentiment){
+	public  static void SentiWriter(File file,String tweet,String Sentiment){
 		
 		try {
 
-			File file = new File(filepath);
+			//File file = new File(filepath);
 			FileWriter fw = new FileWriter(file.getAbsoluteFile());
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(tweet+","+Sentiment);
+			bw.newLine();
 			bw.close();
 			System.out.println("Done");
 
