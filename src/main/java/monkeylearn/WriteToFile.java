@@ -65,10 +65,7 @@ public class WriteToFile {
 		catch (IOException e) {
 		e.printStackTrace();
 	}//catch s 
-		
-		
-			
-		/*String Personspath="/home/storm/Documents/datasetsTopics/Personspath.txt";
+	/*String Personspath="/home/storm/Documents/datasetsTopics/Personspath.txt";
 			try (BufferedReader brpersons = new BufferedReader(new FileReader("/home/storm/Documents/datasetsTopics/persons")))
 			{
 				String PersonLine;

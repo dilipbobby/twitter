@@ -8,12 +8,14 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import com.monkeylearn.MonkeyLearnException;
 
 public class GetSentiment {
 	
-public static void main(String args[]) throws FileNotFoundException, MonkeyLearnException, IOException, SQLException{
+public static void main(String args[]) throws FileNotFoundException, MonkeyLearnException, IOException, SQLException, InterruptedException{
 		
 		
 		WriteToFile topic=new WriteToFile();
@@ -46,13 +48,19 @@ public static void main(String args[]) throws FileNotFoundException, MonkeyLearn
 		topic.SetPathforSentiment(companyip, companyop);
 		topic.SetPathforSentiment(politicsip, Politicstablename);
 		
-	    count++;
+	 count++;
 	 writer.write( "Date and time of update" +date+ "with the count" +count); 
      writer.flush();
      writer.close();
-
-	
-		
-	}
-
+     sleepMinutes(120);// DO SOMETHING EVERY HOUR
+    
+}
+private static void sleepMinutes(int minutes) {
+    try {
+        System.out.println("Sleeping for " + minutes);
+        Thread.sleep(minutes * 1000*60);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}
 }
