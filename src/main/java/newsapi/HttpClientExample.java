@@ -29,9 +29,9 @@ public class HttpClientExample {
 
 	// HTTP GET request
 	///private void sendGet() throws Exception {
-
-		//String url = "http://news.google.com/news?q=india&output=rss";
-		String url = "https://search.yahoo.com/search;?p=apple&fr2=sb-top-search&fr=sfp-tts-s";
+String url="http://ps.moreover.com/page?query=hillaryclinton&n=200&client_id=%20aadhyanalytics%20_set_mi26";
+	//String url = "http://news.google.com/news?q=india&output=rss";
+		//String url = "https://search.yahoo.com/search;?p=apple&fr2=sb-top-search&fr=sfp-tts-s";
 		HttpClient client = new DefaultHttpClient();
 		HttpGet request = new HttpGet(url);
 

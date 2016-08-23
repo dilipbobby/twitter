@@ -50,7 +50,7 @@ public class GoogleFeed {
 						int outputIndex = 0;
 						xmlJSONObj = XML.toJSONObject(inputLine);
 						//System.out.println(xmlJSONObj);
-						List<Object> jsonObjects = new ArrayList<>();
+						List<Object> jsonObjects = new ArrayList<Object>();
 						JSONObject jsonobject=xmlJSONObj;
 						JSONObject RSSobj=null;
 						JSONObject Channel=null;

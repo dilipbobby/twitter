@@ -126,7 +126,7 @@ try{
 
 			
 			  int outputIndex = 0;
-			  List<Object> jsonObjects = new ArrayList<>();
+			  List<Object> jsonObjects = new ArrayList<Object>();
 	            JSONObject jsonobject = new JSONObject(m);
 	            for(int z=0;z<jsonobject.length();z++){
 	            JSONArray splitdata;

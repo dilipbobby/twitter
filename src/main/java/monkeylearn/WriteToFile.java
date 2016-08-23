@@ -10,8 +10,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,8 +42,17 @@ public class WriteToFile {
 					System.out.println(Line);//print line
 					String name=Line;
 					ArrayList<String> tweets = TweetManager.getTweets(name);
+					int tweetsoftopic=tweets.size();
+					System.out.println("numbers of tweets of topic "+tweetsoftopic);
+				
 			        Set<String> uniqueSet = new HashSet<String>();
-			     
+			        Date date = new Date();
+			        System.out.println("Time "+date.toString()+"Total tweets "+tweetsoftopic);
+			        File file = new File("/home/storm/Documents/datasetsTopics/count.txt");
+					FileWriter fileWriter = new FileWriter(file);
+					PrintWriter printWriter = new PrintWriter(fileWriter);
+					printWriter.print("Time "+date.toString()+"Total tweets "+tweetsoftopic);
+					
 			        for(String tweet : tweets){
 			        	uniqueSet.add(tweet);
 			        	if(uniqueSet.contains(tweet)){
@@ -55,14 +66,21 @@ public class WriteToFile {
 					         System.out.println(tweet+","+tweetsentiment);
 					         psqlInsertfields.insertdb(tablename, "'"+tweet+"'", "'"+tweetsentiment+"'");
 							 System.out.println("Done");
-					         //TweetWriter.SentiWriter(file, tweet, tweetsentiment);
-								
+					        //TweetWriter.SentiWriter(file, tweet, tweetsentiment);
+							 //break;
 				        }//if close
+			        	else{System.out.println("MISSED OUT THE TWEET");}
 			        }//for close
-					//bw.close();
+			        Date date2 = new Date();
+			        System.out.println("Time "+date2.toString()+"Total tweets "+tweetsoftopic);
+			        printWriter.print("Time "+date2.toString()+"Total tweets "+tweetsoftopic);
+			        fileWriter.flush();
+					fileWriter.close();
+			       //bw.close();
 				}//while close
 } 
 		catch (IOException e) {
+			
 		e.printStackTrace();
 	}//catch s 
 	/*String Personspath="/home/storm/Documents/datasetsTopics/Personspath.txt";

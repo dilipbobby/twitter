@@ -23,37 +23,34 @@ public class psqlInsertfields {
 	         stmt = c.createStatement();
 	         //String sql = "INSERT INTO TweetSentimentPersons (TweetText,Sentiment) "
 	        		 String sql = "INSERT INTO "+tablename+" (tweet_text,tweetsentiment)"	 
-	         //+ "VALUES (tweet_text,tweetsentiment);";
-	        	 +" VALUES"+" ("+tweet+","+sentiment+");";
-	        		//// +" VALUES"+" (?,?);";
+	       //  + "VALUES (tweet_text,tweetsentiment);";
+	        	// +" VALUES"+" ("+tweet+","+sentiment+");";
+	        		 +" VALUES"+" (?,?);";
+	        		 
 	        		 System.out.println(sql);
-	        		// pstmt = c.prepareStatement(sql);
-	         
-	         
-	        		   ///pstmt.setString(1, tweet);
-	        	      /// pstmt.setString(2, sentiment);
+	        		 pstmt = c.prepareStatement(sql);
+	                 pstmt.setString(1, tweet);
+	        	     pstmt.setString(2, sentiment);
 	        	       //pstmt.setString(3, tweet_language);
 	        	       //pstmt.setString(4, r.getYPredicted().toString());
-	        	      /// pstmt.executeUpdate();
+	        	     pstmt.executeUpdate();
 	         
-	         
-	         
-		         stmt.executeUpdate(sql);
-		         stmt.close();
+	        	// stmt.executeUpdate(sql);
+		       //  stmt.close();
 		         c.commit();
 		         c.close();
 		      } catch (Exception e) {
 		         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-		         System.exit(0);
+		         
+		         //System.exit(0);
 		      }
 
-/*finally {
+finally {
           pstmt.close();
           c.close();
-        }*/
+        }
 		
-		
-	         }//MAIN CLOSE 
+ }//MAIN CLOSE 
 	}///CLASS CLOSE
 
 

@@ -241,7 +241,7 @@ public class Usertimeline_Com_Quoted {
 		
 
 			    int outputIndex = 0;
-			    List<Object> jsonObjects = new ArrayList<>();
+			    List<Object> jsonObjects = new ArrayList<Object>();
 	            JSONObject jsonobject= new JSONObject(json);
 	            try{
 	            System.out.println("PPPPPPPPPPPPPPPPPPPPPP"+jsonobject);
