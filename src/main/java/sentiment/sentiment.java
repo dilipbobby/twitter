@@ -33,10 +33,10 @@ public class sentiment {
 		//String text="Illegal immigrant charged with murder in California fire had prior arrests, was never deported via the @FoxNews App https://t…";
 		//String text="RT @FoxNews: .@JudgeJeanine: Terrorists have no Second Amendment rights https://t.co/BIY8B50UqR";
 		//String text="Fear for fear. Hate for hate. Bullet for bullet. Where r v heading!? 😞";
-		String text="changes outfit 27 times wears first outfit.";
+		String text="changes outfit 27 times wears first outfit in france.";
 		//String text="RT @AJPunkIsMyWorld: Unbelievable. :clap::clap::sob::sob::sob: #WWE #DeanAmbrose #Ambrose #MITB #WWEMITB https://t.co/KZqkgQu01C";
 	  Properties props = new Properties();
-      props.setProperty("annotators", "tokenize, ssplit, pos, lemma, parse, sentiment");
+      props.setProperty("annotators", "tokenize, ssplit, pos, lemma, parse,ner, sentiment");
       //props.put("pos.model", "/home/storm/datasets/twitie-tagger/models/gate-EN-twitter.model");
       ///  props.put("dcoref.score", true);
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
