@@ -19,12 +19,13 @@ public class NLPxmlformate {
 	public static void main(String[] args) throws IOException {
 
 		 Properties props = new Properties();
-		 props.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
+		 props.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref,regexner");
 		 StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
 //		 // read some text in the text variable
-		 String text = "We won the game in India."; // Add your text here!
+//		 String text = "We won the game in India."; // Add your text here!
 //
+		 String text="Online Information Technology Bachelors";
 //		 String text="Vinay Sharma and three others have appealed against their death sentence in the Supreme Court.";
 	 // create an empty Annotation just with the given text
 	 Annotation document = new Annotation(text);
