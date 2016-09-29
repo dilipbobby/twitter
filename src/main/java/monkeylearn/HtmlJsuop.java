@@ -23,7 +23,7 @@ public class HtmlJsuop {
   public final static void main(String[] args) throws Exception{
     FileReader reader = new FileReader
           ("/home/storm/Desktop/mldatasets/topics/subjectivity_html/obj/2002/Aankhen.html");
-   // System.out.println(HtmlJsuop.extractText(reader));
+    System.out.println(HtmlJsuop.extractText(reader));
   }
 }
 
