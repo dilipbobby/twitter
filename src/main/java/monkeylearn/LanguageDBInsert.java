@@ -33,8 +33,7 @@ public class LanguageDBInsert {
 	        	       //pstmt.setString(3, tweet_language);
 	        	       //pstmt.setString(4, r.getYPredicted().toString());
 	        	     pstmt.executeUpdate();
-	         
-	        	// stmt.executeUpdate(sql);
+	        	     // stmt.executeUpdate(sql);
 		       //  stmt.close();
 		         c.commit();
 		         c.close();

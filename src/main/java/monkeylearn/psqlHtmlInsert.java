@@ -13,6 +13,7 @@ public class psqlHtmlInsert {
 		Connection c = null;
 	     Statement stmt = null;
 	     PreparedStatement pstmt = null;
+	     
 	      try {
 	         Class.forName("org.postgresql.Driver");
 	         c = DriverManager
@@ -23,23 +24,29 @@ public class psqlHtmlInsert {
 
 	         stmt = c.createStatement();
 	         //String sql = "INSERT INTO TweetSentimentPersons (TweetText,Sentiment) "
-	        		 String sql = "INSERT INTO "+tablename+" (paragraph_text,obj,filename)"	 
+	        		// String sql = "INSERT INTO "+tablename+" (paragraph_text,obj,filename)"	
+	        				 String sql = "INSERT INTO "+tablename+" (paragraph_text,filename)"	
 	       //  + "VALUES (tweet_text,tweetsentiment);";
 	        	// +" VALUES"+" ("+tweet+","+sentiment+");";
-	        		 +" VALUES"+" (?,?,?);";
+	        		// +" VALUES"+" (?,?,?);";object
+	        				 +" VALUES"+" (?,?);";
+	    	        		 
 	        		 
-	        		 System.out.println(sql);
+	        		 //System.out.println(sql);
 	        		 pstmt = c.prepareStatement(sql);
 	                 pstmt.setString(1, paragraph_text);
-	        	     pstmt.setString(2, obj);
-	        	     pstmt.setString(3, filename);
+	                 pstmt.setString(2, filename);
+	        	    // pstmt.setString(2, obj);
+	        	     //pstmt.setString(3, filename);
 	        	       //pstmt.setString(3, tweet_language);
 	        	       //pstmt.setString(4, r.getYPredicted().toString());
 	        	     pstmt.executeUpdate();
+	        	  
 	         
 	        	// stmt.executeUpdate(sql);
 		       //  stmt.close();
 		         c.commit();
+		         
 		         c.close();
 		      } catch (Exception e) {
 		         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
