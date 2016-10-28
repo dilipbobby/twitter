@@ -8,6 +8,9 @@ import edu.stanford.nlp.util.StringUtils;
 
 import java.util.List;
 import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.XML;
 
 public class NLPInLinexmlexg {
 	
@@ -53,6 +56,8 @@ public class NLPInLinexmlexg {
 	        System.out.println(classifier.classifyToString(s1));
 	        System.out.println(classifier.classifyWithInlineXML(s2));
 	        System.out.println(classifier.classifyToString(s2, "xml", true));
+	        String j=classifier.classifyToString(s2, "xml", true);
+	       System.out.println(XML.toJSONObject(j).toString());
 	      }
 	    }
 
