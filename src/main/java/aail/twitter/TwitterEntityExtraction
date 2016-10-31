@@ -1,0 +1,199 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.zip.GZIPInputStream;
+
+public class TwittertxtFinder {
+	
+	public static void main(String args[]){
+		
+		//String tweet="hv good day $really $codeday #hopeforbest change in the seasons and hve a climate really enjying the this season @Jayathecutie @VanajaPotla";
+		
+		String tweet="https://t.co/oyAiyhjTin check methods @tim @jim @7842630393 #hammer ";
+		System.out.println(tweet.length());
+	    Matcher matcher = Pattern.compile("^[@#]\\w+|(?<=\\s)[@#]\\w+|http+://[\\S]+|https+://[\\S]+").matcher(tweet);
+	    if(tweet.length()<=140 && matcher.find()){
+		       // System.out.println(matcher.group());
+				System.out.println("its a tweet");
+				System.out.println(tweet.length());
+				List Mentions=TwittertxtFinder.Mentionusers(tweet);
+				System.out.println(Mentions);
+				//String HashTags=TwittertxtFinder.Hashtags(tweet);
+				String UserUrl=TwittertxtFinder.MentionusersUrls(tweet);
+				System.out.println("UserUrls "+UserUrl);    
+	    }
+		}//main close
+
+//getUserMentions
+public static List<String> Mentionusers(String tetx){
+	
+		     String result = "";
+		   //replace the value of url matcher to hashtag matcher
+		     String patternStr = "(?:\\s|\\A)[@]+([A-Za-z0-9-_]+)";
+		     Pattern   pattern = Pattern.compile(patternStr);
+		     Matcher  matcher = pattern.matcher(tetx);
+		     List<String> MentionsList = new ArrayList<String>();
+    while (matcher.find()) {
+        result = matcher.group();
+        String raw=result.replace("@", "").trim();
+        String TwitterUserUrl="https://twitter.com/"+raw;
+        System.out.println("check the user"+TwitterUserUrl);
+        try{
+        	 URL url = new URL(TwitterUserUrl); //finds the user is valid or not
+             URLConnection urlCon = url.openConnection();
+             BufferedReader in = null;
+
+             if (urlCon.getHeaderField("Content-Encoding") != null
+                     && urlCon.getHeaderField("Content-Encoding").equals("gzip")) {
+                 in = new BufferedReader(new InputStreamReader(new GZIPInputStream(
+                         urlCon.getInputStream())));
+             } else {
+                 in = new BufferedReader(new InputStreamReader(
+                         urlCon.getInputStream()));
+             }
+
+             String inputLine;
+             StringBuilder sb = new StringBuilder();
+
+             while ((inputLine = in.readLine()) != null)
+                 sb.append(inputLine);
+             in.close();
+             MentionsList.add(result);//adding the correct user
+
+     }//try close
+        	
+        catch(Exception e){System.out.println(e);
+        System.out.println("Invalid user "+result);}//catch close
+
+        
+       // MentionsList.add(result);
+        //result = result.replace(" ", "");
+        //String rawName = result.replace("@", "");
+        //String userHTML="<a href='http://twitter.com/${rawName}'>" + result + "</a>";
+        //tetx = tetx.replace(result,userHTML);
+		
+	}//while check close
+    return MentionsList;	
+}//MentionsTag method close
+
+public static String MentionusersUrls(String tetx){
+	
+    String result = "";
+  //replace the value of url matcher to hashtag matcher
+    String patternStr = "(?:\\s|\\A)[@]+([A-Za-z0-9-_]+)";
+    Pattern   pattern = Pattern.compile(patternStr);
+    Matcher  matcher = pattern.matcher(tetx);
+    List<String> MentionsListUrls = new ArrayList<String>();
+while (matcher.find()) {
+result = matcher.group();
+
+String raw=result.replace("@", "").trim();
+//System.out.println("Raw"+raw);
+//System.out.println("removed name "+raw);
+String TwitterUserUrl="https://twitter.com/"+raw;
+//logic to give working url user 
+try{
+	 URL url = new URL(TwitterUserUrl); //finds the user is valid or not
+    URLConnection urlCon = url.openConnection();
+    BufferedReader in = null;
+
+    if (urlCon.getHeaderField("Content-Encoding") != null
+            && urlCon.getHeaderField("Content-Encoding").equals("gzip")) {
+        in = new BufferedReader(new InputStreamReader(new GZIPInputStream(
+                urlCon.getInputStream())));
+    } else {
+        in = new BufferedReader(new InputStreamReader(
+                urlCon.getInputStream()));
+    }
+    String inputLine;
+    StringBuilder sb = new StringBuilder();
+
+    while ((inputLine = in.readLine()) != null)
+        sb.append(inputLine);
+    in.close();
+    MentionsListUrls.add(TwitterUserUrl);
+
+}//try close
+	
+catch(Exception e){System.out.println(e);
+System.out.println("Invalid user url "+TwitterUserUrl);}//catch close
+
+//TwitterUserUrl.trim();
+//System.out.println(TwitterUserUrl);
+
+//result = result.replace(" ", "");
+//String rawName = result.replace("@", "");
+//String userHTML="<a href='http://twitter.com/${rawName}'>" + result + "</a>";
+//tetx = tetx.replace(result,userHTML);
+
+}//while close
+return MentionsListUrls.toString();	
+}//MentionsTag method close
+
+
+
+
+
+//Getting hashtags from the tweet text
+public static String Hashtags(String tetx){
+	String patternStr = "(?:\\s|\\A)[##]+([A-Za-z0-9-_]+)";
+		     Pattern pattern = Pattern.compile(patternStr);
+		     Matcher matcher = pattern.matcher(tetx);
+		     String result = "";
+		     List<String> HashTagList = new ArrayList<String>();
+
+		  // Search for Hashtags
+		     while (matcher.find()) {
+		         result = matcher.group();
+		         System.out.println("Hashtags"+result);
+		         HashTagList.add(result);
+
+		     }
+			return HashTagList.toString();
+}//HashtagMethod close
+
+
+public static String SymbolsTxt(String tetx){
+	String patternStr = "(?:\\s|\\A)[$]+([A-Za-z0-9-_]+)";
+		     Pattern pattern = Pattern.compile(patternStr);
+		     Matcher matcher = pattern.matcher(tetx);
+		     String result = "";
+		     List<String> SymbolTagList = new ArrayList<String>();
+		     System.out.println("urls " +result);
+
+		  // Search for Hashtags
+		     while (matcher.find()) {
+		         result = matcher.group();
+		         System.out.println("Hashtags"+result);
+		         SymbolTagList.add(result);
+
+		     }
+			return SymbolTagList.toString();
+
+}//SymbolTagMehod close or cash Tags
+
+//Getting Https url links
+public static String HttpsUrls(String tetx){
+	
+	//String patternStr = "http+://[\\S]+|https+://[\\S]+";
+	String patternStr="((https?|ftp|gopher|telnet|file):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\\+-=\\\\\\.&]*)";
+		     Pattern pattern = Pattern.compile(patternStr);
+		     Matcher matcher = pattern.matcher(tetx);
+		     String result = "";
+		     List<String> UrlTagList = new ArrayList<String>();
+
+		  // Search for Hashtags
+		     while (matcher.find()) {
+		         result = matcher.group();
+		         System.out.println("Hashtags"+result);
+		         UrlTagList.add(result);
+               }
+			return UrlTagList.toString();
+
+}//SymbolTagMehod close or cash Tags
+	}//class close
