@@ -46,6 +46,8 @@ public static List<String> Mentionusers(String tetx){
         try{
         	 URL url = new URL(TwitterUserUrl); //finds the user is valid or not
              URLConnection urlCon = url.openConnection();
+	     urlCon.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+
              BufferedReader in = null;
 
              if (urlCon.getHeaderField("Content-Encoding") != null
@@ -100,6 +102,8 @@ String TwitterUserUrl="https://twitter.com/"+raw;
 try{
 	 URL url = new URL(TwitterUserUrl); //finds the user is valid or not
     URLConnection urlCon = url.openConnection();
+     urlCon.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+
     BufferedReader in = null;
 
     if (urlCon.getHeaderField("Content-Encoding") != null
